@@ -7,15 +7,15 @@ public class Player : MonoBehaviour
 {
     public int floor;
     public int PlayerLocation;
-    public string[] Inventory = new string[10];
+    public List<string> TempInv = new List<string>();
     public int[] Decision; 
-
+    //dank memes
     public void SavePlayer ()
     {
-        SaveSystem.SavePlayerData(this);
+        //SaveSystem.SavePlayerData(this);
     }
 
-    public void LoadPlayer1 ()
+   /* public void LoadPlayer1 ()
     {
         PlayerData data = SaveSystem.LoadPlayerData();
         floor = data.floor;
@@ -27,19 +27,23 @@ public class Player : MonoBehaviour
         {
             Decision[i] = data.Decision[i];
         }
-    }
+    }*/
     public void PickUp(string NewItem)
     {
-        string[] ItemArray = Inventory;
+        //List<string> TempInv = new List<string>();
+        for (int x = 0; x < 10; x++)
+        {
+            //TempInv.Add(Inventory[x]);
+        }
 
         int i = 0;
         while (i < 10)
         {
-            string temp = ItemArray[i];
+            string temp = TempInv[i];
             if (temp == "")
             {
 
-                ItemArray[i] = NewItem;
+                TempInv.Add( NewItem);
                 break;
             }
             if (temp[temp.Length - 1] == 'S')
@@ -53,19 +57,19 @@ public class Player : MonoBehaviour
                 {
                     int temp2 = Int32.Parse(temp[0].ToString());
                     temp2++;
-                    ItemArray[i] = (temp2.ToString() + ' ' + temp.Substring(2) + "S");
+                    TempInv[i] = (temp2.ToString() + ' ' + temp.Substring(2) + "S");
                 }
                 else
                 {
-                    ItemArray[i] = ("2 " + temp + "S");
+                    TempInv[i] = ("2 " + temp + "S");
                     
                 }
             }
             i++;
         }
-        
-       
-            Inventory = ItemArray;
-        
+        for (int x = 0; x < 10; x++)
+        {
+           // Inventory[x] = TempInv[x];
+        }
     }
 }

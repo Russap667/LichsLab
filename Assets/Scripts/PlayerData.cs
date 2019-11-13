@@ -6,7 +6,7 @@ public class PlayerData
 {
     public int floor;
     public int PlayerLocation;
-    public string[] Inventory;
+    readonly List<string> TempInv = new List<string>();
     public int[] Decision;
     
 
@@ -14,7 +14,7 @@ public class PlayerData
     {
         floor = p.floor;
         PlayerLocation = p.PlayerLocation;
-        Inventory = p.Inventory;
+        //Inventory = p.Inventory;
         Decision = p.Decision;
     }
 
